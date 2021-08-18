@@ -36,7 +36,7 @@ def connectLDAP(uri, user, password):
 def searchLDAP(connection, root, scope, filter):
     try:
         s = ldap.asyncsearch.List(connection)
-        s.startSearch(root, scope, filter)
+        s.startSearch(root, scope, filter, ['*','+'])
         try:
             partial = s.processResults()
         except ldap.SIZELIMIT_EXCEEDED:
