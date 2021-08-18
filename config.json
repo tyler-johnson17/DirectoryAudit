@@ -1,0 +1,59 @@
+{
+    "debug" : true,
+    "sources" : [
+        {
+            "name" : "GRID LDAP",
+            "type" : "LDAP",
+            "uri" : "",
+            "user" : "",
+            "pass" : "",
+            "objects" : [
+                {
+                    "type" : "user",
+                    "filter" : "(objectClass=*)",
+                    "root" : "",
+                    "scope" : 2, 
+                    "fields" : [
+                        "cn",
+                        "dn",
+                        "uid",
+                        "createTimestamp",
+                        "modifyTimestamp",
+                        "manager",
+                        "title"
+                    ],
+                    "filename" : "last_users.json"
+                },
+                {
+                    "type" : "group",
+                    "filter" : "(objectClass=*)",
+                    "root" : "",
+                    "scope" : 2,
+                    "fields" : [
+                        "dn",
+                        "cn",
+                        "uid",
+			"description",
+                        "createTimestamp",
+                        "modifyTimestamp",
+                        "creatorsName",
+                        "modifiersName" 
+                    ],
+                    "filename" : "last_groups.json"
+                },
+                {
+                    "type" : "members",
+                    "filter" : "(objectClass=groupOfUniqueNames)",
+                    "root" : "",
+                    "scope" : 2,
+                    "fields" : [
+                        "cn",
+                        "dn",
+                        "uniqueMember"
+                    ],
+                    "filename" : "last_members.json"
+                }
+            ]
+        }
+    ]
+}
