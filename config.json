@@ -1,0 +1,59 @@
+{
+    "debug" : true,
+    "sources" : [
+        {
+            "name" : "GRID LDAP",
+            "type" : "LDAP",
+            "uri" : "ldap://ldap.forumsys.com",
+            "user" : "uid=tesla,dc=example,dc=com",
+            "pass" : "password",
+            "objects" : [
+                {
+                    "type" : "user",
+                    "filter" : "(objectClass=*)",
+                    "root" : "dc=example,dc=com",
+                    "scope" : 2, 
+                    "fields" : [
+                        "cn",
+                        "dn",
+                        "uid",
+                        "createTimestamp",
+                        "modifyTimestamp",
+                        "manager",
+                        "title"
+                    ],
+                    "filename" : "last_users.json"
+                },
+                {
+                    "type" : "group",
+                    "filter" : "(objectClass=*)",
+                    "root" : "dc=example,dc=com",
+                    "scope" : 2,
+                    "fields" : [
+                        "dn",
+                        "cn",
+                        "uid",
+                        "createTimestamp",
+                        "modifyTimestamp",
+                        "creatorsName",
+                        "modifiersName" 
+                    ],
+                    "filename" : "last_groups.json"
+                },
+                {
+                    "type" : "members",
+                    "filter" : "(objectClass=*)",
+                    "root" : "dc=example,dc=com",
+                    "scope" : 2,
+                    "fields" : [
+                        "cn",
+                        "dn",
+                        "description",
+                        "uniqueMember"
+                    ],
+                    "filename" : "last_members.json"
+                }
+            ]
+        }
+    ]
+}
